@@ -22,3 +22,12 @@ services:
         restart: always
         environment:
             MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    redis:
+        build:
+            context: ./redis
+        ports:
+            - "${REDIS_PORT}:6379"
+        volumes:
+            - ${DATA_ROOT}/redis/conf:/usr/local/etc/redis
+            - ${DATA_ROOT}/redis/data:/data
+        restart: always
