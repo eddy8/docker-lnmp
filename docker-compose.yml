@@ -31,3 +31,20 @@ services:
             - ${DATA_ROOT}/redis/conf:/usr/local/etc/redis
             - ${DATA_ROOT}/redis/data:/data
         restart: always
+    # phpcli:
+    #     build:
+    #         context: ./php/cli
+    #     volumes:
+    #         - ${DATA_ROOT}/php/data:/data
+    #     restart: always
+    phpfpm:
+        build:
+            context: ./php/fpm
+        ports:
+            - "${PHPFPM_PORT}:9000"
+        volumes:
+            - ${DATA_ROOT}/php/data:/data
+        restart: always
+        depends_on:
+            - mysql
+            - redis
