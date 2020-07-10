@@ -10,3 +10,15 @@ services:
             - ${DATA_ROOT}/nginx/vhosts:/etc/nginx/vhosts
             - ${DATA_ROOT}/www:/www
         restart: always
+    mysql:
+        build:
+            context: ./mysql
+        # image: mysql:5.7
+        ports:
+            - "${MYSQL_PORT}:3306"
+        command: --default-authentication-plugin=mysql_native_password
+        volumes:
+            - ${DATA_ROOT}/mysql:/var/lib/mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
