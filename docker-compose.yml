@@ -39,7 +39,8 @@ services:
     #     restart: always
     phpfpm:
         build:
-            context: ./php/fpm
+            context: ./php
+            dockerfile: ./fpm/Dockerfile
         ports:
             - "${PHPFPM_PORT}:9000"
         volumes:
