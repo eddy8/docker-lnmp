@@ -49,3 +49,10 @@ services:
         depends_on:
             - mysql
             - redis
+    app:
+        build:
+            context: ./php
+            dockerfile: ./app/Dockerfile
+        volumes:
+            - ${DATA_ROOT}/php/data:/data
+        restart: on-failure
