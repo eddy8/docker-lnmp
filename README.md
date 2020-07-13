@@ -18,3 +18,12 @@ docker system prune
 ```
 docker exec -it container_name sh
 ```
+根据`Dockerfile`编译镜像
+```
+docker build --tag imagename:imageversion .
+```
+发布编译好的镜像
+```
+docker tag imagename:imageversion <Your Docker ID>/imagename:imageversion
+docker push <Your Docker ID>/imagename:imageversion
+```
